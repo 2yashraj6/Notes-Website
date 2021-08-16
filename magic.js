@@ -1,6 +1,4 @@
-console.log('hi this is me');
 showNotes();
-// If user add any note then add it to a localstorage
 let addBtn = document.getElementById('addBtn');
 addBtn.addEventListener("click",function(e) {
     let addTxt = document.getElementById("addTxt");
@@ -14,10 +12,9 @@ addBtn.addEventListener("click",function(e) {
     notesObj.push(addTxt.value);
     localStorage.setItem("notes", JSON.stringify(notesObj));
     addTxt.value = "";
-    // console.log(notesObj);
     showNotes();
 })
-// Function to show 
+ 
 function showNotes() {
     let notes = localStorage.getItem("notes");
     if(notes == null){
@@ -46,8 +43,6 @@ function showNotes() {
 }
 
 function deleteNote(index){
-    // console.log('I am deleting',index);
-    
     let notes = localStorage.getItem("notes");
     if(notes == null){
         notesObj = [];
@@ -63,7 +58,6 @@ function deleteNote(index){
 let search = document.getElementById('searchTxt');
 search.addEventListener("input",function(){
     let inputVal = search.value.toLowerCase();
-    // console.log('input event fired',inputVal);
     let noteCards = document.getElementsByClassName('noteCard');
     Array.from(noteCards).forEach(function(element){
         let cardTxt = element.getElementsByTagName("p")[0].innerText;
@@ -73,12 +67,5 @@ search.addEventListener("input",function(){
         else{
             element.style.display = "none";
         }
-        // console.log(cardTxt);
-
     })
 })
-// Further Features
-//1. Add Title
-//2. Mark a note as Important
-//3. seperate notes by user
-//4. sync & host to web server
